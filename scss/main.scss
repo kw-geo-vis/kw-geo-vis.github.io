@@ -9,3 +9,9 @@
 //https://necolas.github.io/normalize.css/
 @import 'normalize';
 
+//Styles for leaflet.js mapping library
+@import 'leaflet';
+
+html, body, #map {
+    height: 100%;
+}
