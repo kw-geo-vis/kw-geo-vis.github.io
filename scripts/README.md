@@ -1,0 +1,1 @@
+Hand authored and third party scripts which are concatenated and minified to form the front-end distributable file for performance reasons.
