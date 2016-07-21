@@ -7,10 +7,13 @@
 
 //Start with a consistent reset across browsers
 //https://necolas.github.io/normalize.css/
-@import 'normalize';
+@import 'lib/normalize';
 
 //Styles for leaflet.js mapping library
-@import 'leaflet';
+@import 'lib/leaflet';
+
+//Styles for esri leaflet geocoding library
+@import 'lib/esri-leaflet-geocoder';
 
 html, body, #map {
     height: 100%;
