@@ -50,7 +50,7 @@ html, body {
 	height: 98%;
 	width: 100%;
 	
-	@media only screen and (max-height:200px)
+	@media only screen and (min-width:480px)
 	{
 		margin: -14px -20px -20px -20px;
 		border-radius: 14px;
