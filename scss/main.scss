@@ -46,7 +46,7 @@ html, body {
   background: transparent;
   }
   
-  iframe { height: 100%;}
+  iframe { height: 98%; width: 100%}
 
 .record {
 
@@ -91,7 +91,7 @@ html, body {
 		font-style: normal;
 	}
 	
-	@media only screen and (min-width:480px)
+	@media only screen and (min-width:480px), (max-height:200px)
 	{
 		width: 100%; //
 		margin: -14px -20px; //
