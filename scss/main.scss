@@ -45,6 +45,8 @@ html, body {
   box-shadow: none;
   background: transparent;
   }
+  
+  iframe { height: 100%;}
 
 .record {
 
@@ -57,7 +59,6 @@ html, body {
 		top: 0;
 		left: 0;
 		overflow: hidden;
-		height: 100%;
 	}
 	&__type {
 		position: relative;
@@ -99,6 +100,7 @@ html, body {
 		
 		&__head {
 			position: absolute;
+			height: 100%;
 		}
 		
 		&__body {
@@ -119,9 +121,9 @@ html, body {
 		}
 		
 		iframe {
-	margin: -14px -20px -18px -20px;
-	border-radius: 14px;
-} 
+			margin: -14px -20px -18px -20px;
+			border-radius: 14px;
+		}
 	}
 }
 
