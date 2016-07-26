@@ -26,9 +26,18 @@ var KWMap = {
 		minZoom: 8,
 		center: [52.878997, -1.078088],
 		iconDir: './imgs',
+		
+		layerName: {
+			Fossil: ["Fossils","Collected Data"],
+			Measurement : ["Measurements","Collected Data"],
+			Borehole :["Boreholes","Collected Data"],
+			Rock: ["Rocks","Collected Data"],
+			BedRock: ["BGS Bedrock Data","Additional Data"],				
+		}
 	},
 	map: undefined,
 	searchControl: undefined,
+	layerControl: undefined,
 
 	_createMap: function() {
 		//Setup leaflet map
@@ -59,6 +68,11 @@ var KWMap = {
 			position: "topright",
 		}).addTo(this.map);
 	},
+	
+	_setupLayerControl: function() {
+		this.layerControl = L.control.groupedLayers(null, null, { collapsed: true, position: 'bottomleft'});
+		this.layerControl.addTo(this.map);
+	},
 
 	_displaySearchResults: function() {
 		// Create an empty layer group to store the search location and add it to the map
@@ -75,15 +89,27 @@ var KWMap = {
 
 	//Add all layers within layers object to the map
 	addLayers: function(layers) {
-		for (var prop in layers) {
-			layers[prop].addTo(this.map);
+		for (var layer in layers) {
+			console.log(layers[layer]);
+			console.log(layer);
+			
+			this.layerControl.addOverlay(layers[layer],this.settings.layerName[layer][0],this.settings.layerName[layer][1]);
+			if(this.settings.layerName[layer][1] == "Collected Data")
+			{
+				layers[layer].addTo(this.map);
+			}
+			
 		}
+		
+		//L.control.layers(null, overlayMaps, { collapsed: true, position: 'bottomleft'} ).addTo(this.map);
+		
 	},
 
 	init: function() {
 		// kick things off
 		this._createMap();
 		this._setupGeocoding();
+		this._setupLayerControl();
 		this._displaySearchResults();
 	}
 

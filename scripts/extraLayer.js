@@ -44,13 +44,13 @@
 			opacity: 0.7,
 			transparent: true,
 			attribution: "Contains British Geological Survey materials copyright NERC 2016",
-			extCont: this.extPopup
+			extCont: this.extPopup,
+			tiled: true
 		};
 		
 		var layer1 = L.WMS.bgs("https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer?", options);
 		layer1.addSubLayer("BGS.50k.Bedrock");
-		
-		layer1.addTo(this.layers.BedRock);
+		layer1.getLayer("BGS.50k.Bedrock").addTo(this.layers.BedRock);
 	},
 
 	//Setup responsive external popup

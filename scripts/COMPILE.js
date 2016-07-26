@@ -7,6 +7,7 @@
 //@prepros-append lib/proj4-src.js
 //@prepros-append lib/papaparse.js
 //@prepros-append lib/leaflet.wms.js
+//@prepros-append lib/leaflet.groupedlayercontrol.js
 
 //Authored source code
 //@prepros-append L.responsivePopup.js

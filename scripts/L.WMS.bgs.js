@@ -53,7 +53,7 @@ L.WMS.Bgs = L.WMS.Source.extend({
             'Y': Math.round(point.y),
 			
 			//Add Custom xsl template
-			'&xsl_template' : 'http://andrew-bean.co.uk/featureinfo_template.xsl',
+			'&xsl_template' : 'https://kw-geo-vis.github.io/data/featureinfo_template.xsl',
         };
         return L.extend({}, wmsParams, infoParams);
 	},
