@@ -46,7 +46,17 @@ html, body {
   background: transparent;
   }
   
-  iframe { height: 98%; width: 100%}
+  iframe { 
+	height: 98%;
+	width: 100%;
+	
+	@media only screen and (max-height:200px)
+	{
+		margin: -14px -20px -20px -20px;
+		border-radius: 14px;
+	}
+	
+	}
 
 .record {
 
@@ -119,11 +129,7 @@ html, body {
 			transform: translatex(-100%) translatey(-0.9em) rotate(-90deg);
 			transform-origin: 100% -0%;
 		}
-		
-		iframe {
-			margin: -14px -20px -18px -20px;
-			border-radius: 14px;
-		}
+	
 	}
 }
 
