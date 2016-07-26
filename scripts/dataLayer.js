@@ -106,7 +106,7 @@ var DataLayer = {
 	//Parse CSV data file and create layer.  In simple implementation
 	//assumes files are well formatted.  In a larger system a DB or other
 	//Web map system may be used but here we live parse the CSVs
-	_parseFile: function(filename, layers, icons, template) {
+	_parseFile: function(filename, layers, icons, template, extCont) {
 		Papa.parse('./data/' + filename, {
 			download: true,
 			header: true,
@@ -136,12 +136,12 @@ var DataLayer = {
 					var marker = L.marker([record['Latitude (WGS84)'], record['Longitude (WGS84)']], {
 						icon: icon
 					});
-					
+					console.log(this.extPopup);
 					//Setup data info popup using HTML template
-					var popup = L.popup({
+					var popup = L.responsivePopup({
 						minWidth: 300,
 						className: 'popup popup--' + record['Type'],
-						extContainer: this.extPopup
+						extContainer: extCont
 					}).setContent(template({
 						record: record
 					}));
@@ -154,10 +154,10 @@ var DataLayer = {
 
 	//Parse the 4 data files
 	_parseFiles: function() {
-		this._parseFile('fossil.txt', this.layers, this.icons, this.popupTemplate);
-		this._parseFile('measurement.txt', this.layers, this.icons, this.popupTemplate);
-		this._parseFile('borehole.txt', this.layers, this.icons, this.popupTemplate);
-		this._parseFile('rock.txt', this.layers, this.icons, this.popupTemplate);
+		this._parseFile('fossil.txt', this.layers, this.icons, this.popupTemplate, this.extPopup);
+		this._parseFile('measurement.txt', this.layers, this.icons, this.popupTemplate, this.extPopup);
+		this._parseFile('borehole.txt', this.layers, this.icons, this.popupTemplate, this.extPopup);
+		this._parseFile('rock.txt', this.layers, this.icons, this.popupTemplate, this.extPopup);
 	},
 
 	init: function() {

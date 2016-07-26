@@ -61,12 +61,15 @@ L.ResponsivePopup = L.Popup.extend({
 		this._updatePosition();
 		this._container.style.visibility = '';
 		this._adjustPan();
-			
+		console.log(typeof this.options.extContainer);	
 		this.options.extContainer.innerHTML = this._content;
 		var closeButton = L.DomUtil.create('a', 'close-button', this.options.extContainer);
 		closeButton.href = '#close';
 		closeButton.innerHTML = '&#215;';
 		L.DomEvent.on(closeButton, 'click', this._onCloseButtonClick, this);
+		
+		console.log(this.options.extContainer.classList);
+		L.DomUtil.addClass(this.options.extContainer,this.options.className);
 		
 		L.DomUtil.removeClass(this.options.extContainer,'hidden');
 		L.DomUtil.addClass(this.options.extContainer,'open');
@@ -82,6 +85,9 @@ L.ResponsivePopup = L.Popup.extend({
 			    .removeLayer(this)
 			    .fire('popupclose', {popup: this});
 		}
+		
+		//Clear classList to remove classes from previous popup;
+		this.options.extContainer.classList = "";
 		
 		L.DomUtil.removeClass(this.options.extContainer,'open');
 		L.DomUtil.addClass(this.options.extContainer,'hidden');	
