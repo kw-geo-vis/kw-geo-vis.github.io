@@ -86,17 +86,65 @@ var KWMap = {
 		this.layerControl = L.control.groupedLayers(null, null, options);
 		this.layerControl.addTo(this.map);
 	},
+	
+	checkAndNavigateToSearchReuslts: function(result) {
+		
+		var padBound = DataLayer.dataBounds.pad(0.5);
+		if(padBound.contains(result.latlng))
+		{
+			this.map.panTo(result.latlng);
+		}
+		else
+		{
+			this.map.fire('modal', {
+				title: 'Are you sure?',
+				content: 'The location you have selected is not in the vacinity of any data points.  Navigate there anyway?',
+				template: ['<div class="modal-header"><h2>{title}</h2></div>',
+				'<hr>',
+				'<div class="modal-body">{content}</div>',
+				'<div class="modal-footer">',
+					'<button class="topcoat-button--large {OK_CLS}">{okText}</button>',
+					'<button class="topcoat-button--large {CANCEL_CLS}">{cancelText}</button>',
+				'</div>'
+				].join(''),
+				okText: 'Yes',
+				cancelText: 'No',
+				OK_CLS: 'modal-ok',
+				CANCEL_CLS: 'modal-cancel',
+
+				width: 300,
+
+				onShow: function(evt) {
+					var modal = evt.modal;
+					L.DomEvent
+					.on(modal._container.querySelector('.modal-ok'), 'click', function() {
+							KWMap.map.panTo(result.latlng);
+							modal.hide();
+					})
+					.on(modal._container.querySelector('.modal-cancel'), 'click', function() {
+							//Do Nothing
+							modal.hide();
+					});
+				}
+			});
+		}
+	},
 
 	_displaySearchResults: function() {
 		// Create an empty layer group to store the search location and add it to the map
 		var results = L.layerGroup().addTo(this.map);
+		var map = "map";
 
 		// listen for the results event and add every result to the map
 		this.searchControl.on("results", function(data) {
+			console.log(data);
 			results.clearLayers();
 			for (var i = data.results.length - 1; i >= 0; i--) {
-				results.addLayer(L.marker(data.results[i].latlng));
-			}
+				var marker = L.marker(data.results[i].latlng);
+				marker.bindPopup("<strong>Search Result:</strong> " + data.text);
+				results.addLayer(marker);
+				KWMap.checkAndNavigateToSearchReuslts(data.results[i]);  
+			}			
 		});
 	},
 

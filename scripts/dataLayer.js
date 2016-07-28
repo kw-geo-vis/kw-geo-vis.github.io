@@ -30,6 +30,7 @@ var DataLayer = {
 	icons: {},
 	extPopup: undefined,
 	popupTemplate: {},
+	dataBounds: undefined,
 
 	//Layers for each data file to enable individual controls
 	_initLayers: function() {
@@ -38,7 +39,14 @@ var DataLayer = {
 		this.layers.Borehole = L.layerGroup();
 		this.layers.Rock = L.layerGroup();
 	},
-
+	
+	//Initialise data Bounds to aid in searches
+	_initDataBounds: function(map) {
+		//Bounds include center of map but no data yet
+		console.log(map.getCenter());
+		this.dataBounds = L.latLngBounds(map.getCenter(), map.getCenter());
+	},
+	
 	//Custom icons for data types
 	_initIcons: function() {
 		this.icons.Fossil = 'marker-icon-fossil.png';
@@ -83,7 +91,7 @@ var DataLayer = {
 					(<%= record["Rock name"] %>)	\
 				<% } %> \
 			</h3>	\
-			<div class="record__coords">(52.87380503, -1.072624763) WGS84</div>	\
+			<div class="record__coords">(<%= record["Latitude (WGS84)"] %>, <%= record["Longitude (WGS84)"] %>) WGS84</div>	\
 			<p class="record__text">	\
 				Height Elevation: <span><%= record["Z"] %>m</span><br/> \
 				Recorded by: <span><%= record["Recorded by"] %></span><br/>	\
@@ -147,6 +155,8 @@ var DataLayer = {
 					}));
 					marker.bindPopup(popup);
 					layers[record['Type']].addLayer(marker);
+					
+					DataLayer.dataBounds.extend([record['Latitude (WGS84)'], record['Longitude (WGS84)']]);
 				}
 			}
 		});
@@ -160,14 +170,16 @@ var DataLayer = {
 		this._parseFile('rock.txt', this.layers, this.icons, this.popupTemplate, this.extPopup);
 	},
 
-	init: function() {
+	init: function(map) {
 		// kick things off
 		this._initLayers();
 		this._initIcons();
+		this._initDataBounds(map);
 		this._initExtPopup();
 		this._initProjections();
 		this._setupTemplate();
 		this._parseFiles();
+		
 	}
 
 };
