@@ -54,6 +54,7 @@ L.WMS.Bgs = L.WMS.Source.extend({
 			
 			//Add Custom xsl template
 			'&xsl_template' : 'https://kw-geo-vis.github.io/data/featureinfo_template.xsl',
+			//'&xsl_template' : 'https://geologyresources.co.uk/featureinfo_template.xsl',
         };
         return L.extend({}, wmsParams, infoParams);
 	},

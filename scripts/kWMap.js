@@ -32,7 +32,10 @@ var KWMap = {
 			Measurement : ["Measurements","Collected Data"],
 			Borehole :["Boreholes","Collected Data"],
 			Rock: ["Rocks","Collected Data"],
-			BedRock: ["BGS Bedrock Data","Additional Data"],				
+			Empty: ["No Additional Data","Additional Data"],	
+			BedRock: ["BGS Bedrock Data","Additional Data"],		
+			Superficial: ["BGS Superficial Deposits Data","Additional Data"],	
+			Artificial: ["BGS Artificial Ground","Additional Data"],	
 		}
 	},
 	map: undefined,
@@ -53,6 +56,10 @@ var KWMap = {
 
 		//Centre on BGS Keyworth
 		this.map.setView(new L.LatLng(this.settings.center[0], this.settings.center[1]), 15);
+		
+		    this.map.fire('modal', {
+      content: '<h1>KeyVis</h1><p>Welcome to KEYVis</h1>'
+    });
 	},
 
 	_setupGeocoding: function() {
@@ -70,7 +77,13 @@ var KWMap = {
 	},
 	
 	_setupLayerControl: function() {
-		this.layerControl = L.control.groupedLayers(null, null, { collapsed: true, position: 'bottomleft'});
+		var options = {
+			// Make the "Additional Data" group exclusive (use radio inputs)
+			exclusiveGroups: ["Additional Data"],
+			collapsed: true,
+			position: 'bottomleft'
+			};
+		this.layerControl = L.control.groupedLayers(null, null, options);
 		this.layerControl.addTo(this.map);
 	},
 
@@ -93,16 +106,22 @@ var KWMap = {
 			console.log(layers[layer]);
 			console.log(layer);
 			
+			//Add collected data layers to map immediately
 			this.layerControl.addOverlay(layers[layer],this.settings.layerName[layer][0],this.settings.layerName[layer][1]);
 			if(this.settings.layerName[layer][1] == "Collected Data")
 			{
 				layers[layer].addTo(this.map);
 			}
 			
+			//Add 'empty' additional layer
+			if(this.settings.layerName[layer][0] == "No Additional Data")
+			{
+				console.log("ok");
+				layers[layer].addTo(this.map);
+			}
+			
 		}
-		
-		//L.control.layers(null, overlayMaps, { collapsed: true, position: 'bottomleft'} ).addTo(this.map);
-		
+	
 	},
 
 	init: function() {

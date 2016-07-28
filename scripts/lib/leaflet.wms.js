@@ -302,7 +302,7 @@ wms.Overlay = L.Layer.extend({
     'defaultWmsParams': {
         'service': 'WMS',
         'request': 'GetMap',
-        'version': '1.1.1',
+        'version': '1.3.0',
         'layers': '',
         'styles': '',
         'format': 'image/jpeg',

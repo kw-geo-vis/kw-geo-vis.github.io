@@ -93,8 +93,11 @@ L.Control.GroupedLayers = L.Control.extend({
       }
       var link = this._layersLink = L.DomUtil.create('a', className + '-toggle', container);
       link.href = '#';
-      link.title = 'Layers';
-
+      link.title = 'sLayers';
+	  link.innerHtml = 'Yo';
+		console.log(link);
+		
+		
       if (L.Browser.touch) {
         L.DomEvent
             .on(link, 'click', L.DomEvent.stop)
@@ -114,6 +117,8 @@ L.Control.GroupedLayers = L.Control.extend({
     this._overlaysList = L.DomUtil.create('div', className + '-overlays', form);
 
     container.appendChild(form);
+	
+
   },
 
   _addLayer: function (layer, name, group, overlay) {

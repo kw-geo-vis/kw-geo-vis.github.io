@@ -15,6 +15,9 @@
 //Styles for esri leaflet geocoding library
 @import 'lib/esri-leaflet-geocoder';
 
+//Styles for leaflet modal library
+@import 'lib/leaflet.modal';
+
 html, body {
     height: 100%;
 }
@@ -32,7 +35,7 @@ html, body {
   line-height:24px;
   }
   
-  .popup--Bedrock .leaflet-popup-content p
+  .popup--Bedrock .leaflet-popup-content-wrapper
   {
 	border-radius: 12px 0 0 12px;
   }
@@ -54,7 +57,7 @@ html, body {
 	
 	@media only screen and (min-width:480px)
 	{
-		margin: -14px -20px -20px -20px;
+		margin: -14px -20px -18px -20px;
 		border-radius: 14px;
 		width: 118%;
 	}
@@ -136,6 +139,24 @@ html, body {
 		}
 	
 	}
+}
+
+.leaflet-control-layers-toggle {
+	width: auto;
+	padding-left: 30px;
+	background-position-x: 5px;
+	text-decoration: initial;
+} 
+.leaflet-control-layers-toggle::after {
+	content: 'Select Data Layers';
+	display: block;
+	padding: 10px;
+} 
+
+@media only screen and (max-width:850px) {
+.leaflet-control-attribution {
+	max-width: 50%;
+}
 }
 
 .popup--Rock {
