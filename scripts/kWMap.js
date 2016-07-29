@@ -84,7 +84,7 @@ var KWMap = {
 				'',
 				'<img src="imgs/extra-data.gif" class="intro__img">',
 				'<p class="intro__text intro__text--spaced">Additionally, data layers from the <a href="http://bgs.ac.uk">British Geological Survey</a> can be viewed using the "Select Data Layers" tab.</p>',
-				'<p class="intro__text intro__text--clear">Project source code can be viewed at <a href="gith">Github</a>.</p>',
+				'<p class="intro__text intro__text--clear">Project source code can be viewed at <a href="https://github.com/kw-geo-vis/kw-geo-vis.github.io">Github</a>.</p>',
 			].join(''),		
 		});
 	},
