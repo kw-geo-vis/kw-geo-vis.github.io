@@ -12,11 +12,11 @@ All aspects of the specification have been completed with data from the provided
 
 Additionally, data overlays for BGS data sources displaying Bedrock, Superficial Deposits and Artificial ground can be toggled on and off and the associated data record accessed.
 
-![KEYvis additional functionality](https://kw-geo-vis.github.io/imgs/extra-data.gif | width=300)
+<img src="https://kw-geo-vis.github.io/imgs/extra-data.gif" width="300" alt="KEYvis additional functionality"/>
 
 The site is a responsive web-based application which is equally functional on large displays and mobile devices.
 
-![KEYvis responsive layout](https://kw-geo-vis.github.io/imgs/responsive.gif | width=300)
+<img src="https://kw-geo-vis.github.io/imgs/responsive.gif" width="300" alt="KEYvis responsive layout"/>
 
 ## Code Structure
 
