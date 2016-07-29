@@ -46,7 +46,7 @@
 			format: 'image/png',
 			opacity: 0.7,
 			transparent: true,
-			attribution: "Contains British Geological Survey materials copyright NERC 2016",
+			attribution: "",
 			extCont: this.extPopup,
 			tiled: true
 		};

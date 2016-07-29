@@ -41,15 +41,23 @@ var KWMap = {
 	map: undefined,
 	searchControl: undefined,
 	layerControl: undefined,
+	currZoom: 15,
 
+	resetCenter: function() {
+		console.log("center");
+		this.map.setView(new L.LatLng(this.settings.center[0], this.settings.center[1]), 15);
+	},
+	
 	_createMap: function() {
 		//Setup leaflet map
 		this.map = L.map(this.settings.container);
 		L.Icon.Default.imagePath = this.settings.iconDir;
 
+		this.map.attributionControl.setPrefix('');
+		
 		//Add OSM tilelayer
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+			attribution: '',
 			maxZoom: this.settings.maxZoom,
 			minZoom: this.settings.minZoom,
 		}).addTo(this.map);
@@ -62,21 +70,21 @@ var KWMap = {
 		this.map.fire('modal', {
 			template: ['',
 				'<div class="intro">',
-				'<h1 class="intro__head">KeyVis</h1>',
-				'<p class="intro__text">Welcome to KEYVis.  KeyVis provides easy access to geological information and data from in and around the KeyWorth area</p>',
+				'<h1 class="intro__head"><div class="logo"><span class="logo__key">KEY</span><span class="logo__vis">vis</span></div></h1>',
+				'<p class="intro__text">Welcome to KEYvis.  KEYvis provides easy access to geological information and data from in and around the KeyWorth area.</p>',
 				'<img src="imgs/data.gif"  class="intro__img">',
 				'<p class="intro__text">Data points available include:</p>',
 				'<ul>',				
 					'<li>Fossils</li>',
-					'<li>Rock Samples</li>',
+					'<li>Rock samples</li>',
 					'<li>Boreholes</li>',
 					'<li>Measurements</li>',
 				'</ul>',
-				'Data associated with data samples can be viewed by clicking on a pointer.</p>',
+				'Data associated with samples can be viewed by clicking on a coloured pin.</p>',
 				'',
 				'<img src="imgs/extra-data.gif" class="intro__img">',
 				'<p class="intro__text intro__text--spaced">Additionally, data layers from the <a href="http://bgs.ac.uk">British Geological Survey</a> can be viewed using the "Select Data Layers" tab.</p>',
-				'<p class="intro__text intro__text--clear">Project Source code can be viewed at <a href="gith">Github</a></p>',
+				'<p class="intro__text intro__text--clear">Project source code can be viewed at <a href="gith">Github</a>.</p>',
 			].join(''),		
 		});
 	},
@@ -98,7 +106,7 @@ var KWMap = {
 				'<p class="intro__text intro__text--tight">"<a href="https://thenounproject.com/term/drill/326595/">drill</a>" icon by Marie Van den Broeck from <a href="http://thenounproject.com/">the Noun Project</a></p>',
 				'<p class="intro__text intro__text--tight">"<a href="https://thenounproject.com/term/measure/168275/">Tape Measure</a>" icon by Amy Schwartz from <a href="http://thenounproject.com/">the Noun Project</a></p>',
 				'<hr>',
-				'<p class="intro__text">All other code and design, Andrew Bean</p>',
+				'<p class="intro__text">All other code and design, <a href="https://uk.linkedin.com/in/andrew-bean-2001a591">Andrew Bean</a></p>',
 			].join(''),		
 		});
 	},
@@ -110,6 +118,7 @@ var KWMap = {
 			providers: [L.esri.Geocoding.arcgisOnlineProvider({
 				countries: "GBR"
 			})],
+			attribution: '',
 			useMapBounds: false,
 			expanded: true,
 			collapseAfterResult: false,
@@ -139,7 +148,7 @@ var KWMap = {
 		{
 			this.map.fire('modal', {
 				title: 'Are you sure?',
-				content: 'The location you have selected is not in the vacinity of any data points.  Navigate there anyway?',
+				content: 'The location you have selected is not in the vicinity of any data points.  Navigate there anyway?',
 				template: ['<div class="modal-header"><h2>{title}</h2></div>',
 				'<hr>',
 				'<div class="modal-body">{content}</div>',

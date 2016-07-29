@@ -763,7 +763,7 @@
 	  options: {
 	    label: 'Places and Addresses',
 	    maxResults: 5,
-	    attribution: '<a href="https://developers.arcgis.com/en/features/geocoding/">Geocoding by Esri</a>'
+	    attribution: ''
 	  },
 
 	  suggestions: function (text, bounds, callback) {

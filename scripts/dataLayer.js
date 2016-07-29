@@ -91,7 +91,8 @@ var DataLayer = {
 					(<%= record["Rock name"] %>)	\
 				<% } %> \
 			</h3>	\
-			<div class="record__coords">(<%= record["Latitude (WGS84)"] %>, <%= record["Longitude (WGS84)"] %>) WGS84</div>	\
+			<div class="record__coords">(<% print(Math.round(record["Latitude (WGS84)"]*Math.pow(10,8))/Math.pow(10,8)) %>, <% print(Math.round(record["Longitude (WGS84)"]*Math.pow(10,9))/Math.pow(10,9)) %>) WGS84<br/> \
+			</div>	\
 			<p class="record__text">	\
 				Height Elevation: <span><%= record["Z"] %>m</span><br/> \
 				Recorded by: <span><%= record["Recorded by"] %></span><br/>	\

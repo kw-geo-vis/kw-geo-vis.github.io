@@ -159,6 +159,14 @@ html, body {
 }
 }
 
+.head {
+	.logo {
+		font-size: 2em;
+		display: flex;
+		cursor: pointer;
+	}
+}
+
 .popup--Rock {
 	.leaflet-popup-content-wrapper {
 		background-color: darken(#bb3e3e,10%);
@@ -255,6 +263,19 @@ html, body {
 	.open, .hidden
 	{
 		display: none;
+	}
+}
+
+.logo {
+	&__key {
+		display: inline-block;
+		font-family: 'Fjalla One', sans-serif;
+	}
+	
+	&__vis {
+		display: inline-block;
+		transform: skewx(-16deg);
+		font-family: 'Fjalla One', sans-serif;
 	}
 }
 
