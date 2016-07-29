@@ -93,9 +93,7 @@ L.Control.GroupedLayers = L.Control.extend({
       }
       var link = this._layersLink = L.DomUtil.create('a', className + '-toggle', container);
       link.href = '#';
-      link.title = 'sLayers';
-	  link.innerHtml = 'Yo';
-		console.log(link);
+      link.title = 'Layers';
 		
 		
       if (L.Browser.touch) {

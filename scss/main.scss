@@ -75,6 +75,7 @@ html, body {
 		top: 0;
 		left: 0;
 		overflow: hidden;
+		pointer-events: none;
 	}
 	&__type {
 		position: relative;
@@ -127,6 +128,7 @@ html, body {
 		}
 		
 		&__img {
+			width: 35%;
 			max-width: 35%;
 			margin-left: 1em;
 		}
@@ -295,6 +297,11 @@ html, body {
 		&--clear
 		{
 			clear: both;
+		}
+		
+		&--tight
+		{
+			margin: 0;
 		}
 		
 		&--spaced

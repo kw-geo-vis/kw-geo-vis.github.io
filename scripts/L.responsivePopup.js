@@ -51,6 +51,20 @@ L.ResponsivePopup = L.Popup.extend({
 		if (animFade) {
 			L.DomUtil.setOpacity(this._container, 1);
 		}		
+		
+		var image = this._container.querySelector('.record__img');
+		if(image != null)
+		{
+			image.onload = function(){
+				this.addEventListener("click",function(){
+					map.fire('modal', {
+					template: ['',
+						'<img src="' + this.src + '" style="width: 100%"/>',
+					].join(''),		
+					});
+				});
+			};
+		}
 	},
 		
 	_update: function () {
@@ -61,14 +75,13 @@ L.ResponsivePopup = L.Popup.extend({
 		this._updatePosition();
 		this._container.style.visibility = '';
 		this._adjustPan();
-		console.log(typeof this.options.extContainer);	
+	
 		this.options.extContainer.innerHTML = this._content;
 		var closeButton = L.DomUtil.create('a', 'close-button', this.options.extContainer);
 		closeButton.href = '#close';
 		closeButton.innerHTML = '&#215;';
 		L.DomEvent.on(closeButton, 'click', this._onCloseButtonClick, this);
 		
-		console.log(this.options.extContainer.classList);
 		L.DomUtil.addClass(this.options.extContainer,this.options.className);
 		
 		L.DomUtil.removeClass(this.options.extContainer,'hidden');

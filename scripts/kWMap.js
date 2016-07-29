@@ -44,7 +44,6 @@ var KWMap = {
 	currZoom: 15,
 
 	resetCenter: function() {
-		console.log("center");
 		this.map.setView(new L.LatLng(this.settings.center[0], this.settings.center[1]), 15);
 	},
 	
@@ -94,14 +93,18 @@ var KWMap = {
 			template: ['',
 				'<div class="intro">',
 				'<h1 class="intro__head">Credits</h1>',
+				'<h2>Mapping</h2>',
 				'<p class="intro__text intro__text--tight">Mapping imagery provided by <a href="http://openstreetmap.org/">Open Street Map</a></p>',
 				'<p class="intro__text intro__text--tight">Geocoding provided by <a href="https://developers.arcgis.com/en/features/geocoding/">Esri</a></p>',
 				'<p class="intro__text intro__text--tight">Mapping interface by <a href="http://leafletjs.com/">leaflet.js</a></p>',
 				'<p class="intro__text intro__text--tight">leaflet.js extensions by <a href="https://github.com/">the open source community</a></p>',
+				'<h2>Data Processing</h2>',
+				'<p class="intro__text intro__text--tight">CSV parsing by <a href="http://papaparse.com/">Papa Parse</a></p>',
 				'<p class="intro__text intro__text--tight">CRS conversions by <a href="http://proj4js.org/">proj4js</a></p>',
+				'<h2>Additional Datasets</h2>',
 				'<p class="intro__text intro__text--tight">Data overlays by <a href="http://bgs.ac.uk/">British Geological Survey</a> &copy; NERC 2016</p>',
-				'<hr>',
-				'<p class="intro__text intro__text--tight">"<a href="https://thenounproject.com/term/fossil/57812/">shell</a>" icon Caitlin McCormick from <a href="http://thenounproject.com/">the Noun Project</a></p>',
+				'<h2>Icons</h2>',
+				'<p class="intro__text intro__text--tight">"<a href="https://thenounproject.com/term/fossil/57812/">shell</a>" icon by Caitlin McCormick from <a href="http://thenounproject.com/">the Noun Project</a></p>',
 				'<p class="intro__text intro__text--tight">"<a href="https://thenounproject.com/term/rock/445138/">rock</a>" icon Artem  Kovyazin from <a href="http://thenounproject.com/">the Noun Project</a></p>',
 				'<p class="intro__text intro__text--tight">"<a href="https://thenounproject.com/term/drill/326595/">drill</a>" icon by Marie Van den Broeck from <a href="http://thenounproject.com/">the Noun Project</a></p>',
 				'<p class="intro__text intro__text--tight">"<a href="https://thenounproject.com/term/measure/168275/">Tape Measure</a>" icon by Amy Schwartz from <a href="http://thenounproject.com/">the Noun Project</a></p>',
@@ -139,7 +142,7 @@ var KWMap = {
 	
 	checkAndNavigateToSearchReuslts: function(result) {
 		
-		var padBound = DataLayer.dataBounds.pad(0.5);
+		var padBound = DataLayer.dataBounds.pad(0.75);
 		if(padBound.contains(result.latlng))
 		{
 			this.map.panTo(result.latlng);
@@ -189,20 +192,19 @@ var KWMap = {
 		this.searchControl.on("results", function(data) {
 			console.log(data);
 			results.clearLayers();
-			for (var i = data.results.length - 1; i >= 0; i--) {
-				var marker = L.marker(data.results[i].latlng);
-				marker.bindPopup("<strong>Search Result:</strong> " + data.text);
-				results.addLayer(marker);
-				KWMap.checkAndNavigateToSearchReuslts(data.results[i]);  
-			}			
+			
+			//Just display/navigate to the hit at the top of the suggest list (end of results array)
+			var marker = L.marker(data.results[data.results.length-1].latlng);
+			marker.bindPopup("<strong>Search Result:</strong> " + data.text);
+			results.addLayer(marker);
+			
+			KWMap.checkAndNavigateToSearchReuslts(data.results[data.results.length-1]);  		
 		});
 	},
 
 	//Add all layers within layers object to the map
 	addLayers: function(layers) {
 		for (var layer in layers) {
-			console.log(layers[layer]);
-			console.log(layer);
 			
 			//Add collected data layers to map immediately
 			this.layerControl.addOverlay(layers[layer],this.settings.layerName[layer][0],this.settings.layerName[layer][1]);
@@ -214,7 +216,6 @@ var KWMap = {
 			//Add 'empty' additional layer
 			if(this.settings.layerName[layer][0] == "No Additional Data")
 			{
-				console.log("ok");
 				layers[layer].addTo(this.map);
 			}
 			

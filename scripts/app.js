@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	ExtraLayer.init();
     KWMap.addLayers(DataLayer.layers);
 	KWMap.addLayers(ExtraLayer.layers);
-	document.getElementById('logo').addEventListener('click',function(){console.log("click"); KWMap.resetCenter();});
+	document.getElementById('logo').addEventListener('click',function(){KWMap.resetCenter();});
 	
 	
 	
@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	});
 	
 	KWMap.map.on('zoomend', function (e) { 
-		console.log(KWMap.currZoom);
-		console.log(this.getZoom());
 		if(this.getZoom() <= 12 & this.getZoom() < KWMap.currZoom) 
 			if(this.hasLayer(ExtraLayer.layers.BedRock) || this.hasLayer(ExtraLayer.layers.Superficial) || this.hasLayer(ExtraLayer.layers.Artificial))
 			{
@@ -24,7 +22,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 					'BGS data layers are not visible at this zoom level.  Zoom in further to view them.',
 				].join(''),		
 				});
-				console.log(e);
 			}
 	});
+
+
 });

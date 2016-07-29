@@ -43,7 +43,6 @@ var DataLayer = {
 	//Initialise data Bounds to aid in searches
 	_initDataBounds: function(map) {
 		//Bounds include center of map but no data yet
-		console.log(map.getCenter());
 		this.dataBounds = L.latLngBounds(map.getCenter(), map.getCenter());
 	},
 	
@@ -145,7 +144,6 @@ var DataLayer = {
 					var marker = L.marker([record['Latitude (WGS84)'], record['Longitude (WGS84)']], {
 						icon: icon
 					});
-					console.log(this.extPopup);
 					//Setup data info popup using HTML template
 					var popup = L.responsivePopup({
 						minWidth: 300,
