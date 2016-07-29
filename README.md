@@ -1,22 +1,22 @@
 # KEYvis: Visualising Geological Data in the Keyworth Area
 
-This is the code repository for Andrew Bean's submission for the Geospatial Applications Developer Assignment
+This is the code repository for Andrew Bean's submission for the Geospatial Applications Developer Assignment.
 
-The produed responsive website can be viewed at https://kw-geo-vis.github.io/
+The produced responsive website can be viewed at https://kw-geo-vis.github.io/
 
 ## Features
 
 All aspects of the specification have been completed with data from the provided files displayed on a simple map interface which includes location search functionality.
 
-![Alt text](https://kw-geo-vis.github.io/imgs/data.gif "Optional title")
+![KEYvis main functionality](https://kw-geo-vis.github.io/imgs/data.gif | width=300)
 
 Additionally, data overlays for BGS data sources displaying Bedrock, Superficial Deposits and Artificial ground can be toggled on and off and the associated data record accessed.
 
-![Alt text](https://kw-geo-vis.github.io/imgs/extra-data.gif "Optional title")
+![KEYvis additional functionality](https://kw-geo-vis.github.io/imgs/extra-data.gif | width=300)
 
-The site is a responsive web-based application which equally functional on large displays and mobile devices.
+The site is a responsive web-based application which is equally functional on large displays and mobile devices.
 
-![Alt text](https://kw-geo-vis.github.io/imgs/responsive.gif "Optional title")
+![KEYvis responsive layout](https://kw-geo-vis.github.io/imgs/responsive.gif | width=300)
 
 ## Code Structure
 
@@ -32,4 +32,4 @@ Some possible feature extensions to the application which have not yet been impl
 
 * Facility to upload and visualise additional data files with new data.  CSV files are already parsed and displayed on request so will not be complicated.
 * Geolocation to display a pointer showing the user's current location (particularly beneficial on mobile).
-* Caching of data and map tiles using IndexedDB, localStorage etc to allow the application to be used withouth an internet connection (e.g. in the field).
+* Caching of data and map tiles using IndexedDB, localStorage etc. to allow the application to be used without an internet connection (e.g. in the field).
