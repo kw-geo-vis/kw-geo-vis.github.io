@@ -8,7 +8,7 @@ The produced responsive website can be viewed at https://kw-geo-vis.github.io/
 
 All aspects of the specification have been completed with data from the provided files displayed on a simple map interface which includes location search functionality.
 
-![KEYvis main functionality](https://kw-geo-vis.github.io/imgs/data.gif | width=300)
+<img src="https://kw-geo-vis.github.io/imgs/data.gif" width="300" alt="KEYvis core functionality"/>
 
 Additionally, data overlays for BGS data sources displaying Bedrock, Superficial Deposits and Artificial ground can be toggled on and off and the associated data record accessed.
 
