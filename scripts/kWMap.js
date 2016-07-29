@@ -56,12 +56,53 @@ var KWMap = {
 
 		//Centre on BGS Keyworth
 		this.map.setView(new L.LatLng(this.settings.center[0], this.settings.center[1]), 15);
-		
-		    this.map.fire('modal', {
-      content: '<h1>KeyVis</h1><p>Welcome to KEYVis</h1>'
-    });
 	},
 
+	_welcomeModal: function() {
+		this.map.fire('modal', {
+			template: ['',
+				'<div class="intro">',
+				'<h1 class="intro__head">KeyVis</h1>',
+				'<p class="intro__text">Welcome to KEYVis.  KeyVis provides easy access to geological information and data from in and around the KeyWorth area</p>',
+				'<img src="imgs/data.gif"  class="intro__img">',
+				'<p class="intro__text">Data points available include:</p>',
+				'<ul>',				
+					'<li>Fossils</li>',
+					'<li>Rock Samples</li>',
+					'<li>Boreholes</li>',
+					'<li>Measurements</li>',
+				'</ul>',
+				'Data associated with data samples can be viewed by clicking on a pointer.</p>',
+				'',
+				'<img src="imgs/extra-data.gif" class="intro__img">',
+				'<p class="intro__text intro__text--spaced">Additionally, data layers from the <a href="http://bgs.ac.uk">British Geological Survey</a> can be viewed using the "Select Data Layers" tab.</p>',
+				'<p class="intro__text intro__text--clear">Project Source code can be viewed at <a href="gith">Github</a></p>',
+			].join(''),		
+		});
+	},
+	
+	displayCredits: function() {
+		this.map.fire('modal', {
+			template: ['',
+				'<div class="intro">',
+				'<h1 class="intro__head">Credits</h1>',
+				'<p class="intro__text intro__text--tight">Mapping imagery provided by <a href="http://openstreetmap.org/">Open Street Map</a></p>',
+				'<p class="intro__text intro__text--tight">Geocoding provided by <a href="https://developers.arcgis.com/en/features/geocoding/">Esri</a></p>',
+				'<p class="intro__text intro__text--tight">Mapping interface by <a href="http://leafletjs.com/">leaflet.js</a></p>',
+				'<p class="intro__text intro__text--tight">leaflet.js extensions by <a href="https://github.com/">the open source community</a></p>',
+				'<p class="intro__text intro__text--tight">CRS conversions by <a href="http://proj4js.org/">proj4js</a></p>',
+				'<p class="intro__text intro__text--tight">Data overlays by <a href="http://bgs.ac.uk/">British Geological Survey</a> &copy; NERC 2016</p>',
+				'<hr>',
+				'<p class="intro__text intro__text--tight">"<a href="https://thenounproject.com/term/fossil/57812/">shell</a>" icon Caitlin McCormick from <a href="http://thenounproject.com/">the Noun Project</a></p>',
+				'<p class="intro__text intro__text--tight">"<a href="https://thenounproject.com/term/rock/445138/">rock</a>" icon Artem  Kovyazin from <a href="http://thenounproject.com/">the Noun Project</a></p>',
+				'<p class="intro__text intro__text--tight">"<a href="https://thenounproject.com/term/drill/326595/">drill</a>" icon by Marie Van den Broeck from <a href="http://thenounproject.com/">the Noun Project</a></p>',
+				'<p class="intro__text intro__text--tight">"<a href="https://thenounproject.com/term/measure/168275/">Tape Measure</a>" icon by Amy Schwartz from <a href="http://thenounproject.com/">the Noun Project</a></p>',
+				'<hr>',
+				'<p class="intro__text">All other code and design, Andrew Bean</p>',
+			].join(''),		
+		});
+	},
+	
 	_setupGeocoding: function() {
 		// Create an ESRI geocoding control and add it to the map
 		this.searchControl = L.esri.Geocoding.geosearch({
@@ -175,6 +216,7 @@ var KWMap = {
 	init: function() {
 		// kick things off
 		this._createMap();
+		this._welcomeModal();
 		this._setupGeocoding();
 		this._setupLayerControl();
 		this._displaySearchResults();

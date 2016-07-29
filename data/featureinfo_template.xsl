@@ -48,8 +48,8 @@
 							<div class="record__body">
 								<div class="record__details">
 								<p class="record__text">
-									There is not data for this location for your
-									chosen data layer
+									There is not data at this location for your
+									chosen data set
 								</p>
 								<p class="record__text">
 									Try another location or switch data layer
