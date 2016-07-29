@@ -42,13 +42,13 @@
 		// L.WMS.bgs extends L.WMS.source to style returned feature info data and deal
 		// with Cross-Origin request issues.
 		var options = {
-			layers: 'BGS.50k.Bedrock',
 			format: 'image/png',
 			opacity: 0.7,
 			transparent: true,
 			attribution: "",
 			extCont: this.extPopup,
-			tiled: true
+			tiled: true,
+			minZoom: 12
 		};
 		
 		var layer1 = L.WMS.bgs("https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer?", options);
