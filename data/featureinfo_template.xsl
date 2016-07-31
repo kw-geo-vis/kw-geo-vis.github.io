@@ -19,6 +19,11 @@
 			body {
 				font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
 			}
+			
+			.record {
+				font-size: 1em !important;
+			}
+			
 			.record__head { 
 				position: fixed !important;
 			}
