@@ -83,7 +83,7 @@ var KWMap = {
 				'Data associated with samples can be viewed by clicking on a coloured pin.</p>',
 				'',
 				'<img src="imgs/extra-data.gif" class="intro__img">',
-				'<p>Extra data files can be loaded for visualisation of new data using the upload button in the bottom right hand corner (uploaded data is not saved)</p>',
+				'<p>Extra data files can be loaded for visualisation of new data using the upload button in the bottom right hand corner (uploaded data is not saved).</p>',
 				'<p class="intro__text intro__text--spaced">Additionally, data layers from the <a href="http://bgs.ac.uk">British Geological Survey</a> can be viewed using the "Select Data Layers" tab.</p>',
 				'<p class="intro__text intro__text--clear">Project source code can be viewed at <a href="https://github.com/kw-geo-vis/kw-geo-vis.github.io">Github</a>.</p>',
 			].join(''),		

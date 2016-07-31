@@ -33,6 +33,6 @@ The site is a responsive web-based application which is equally functional on la
 Some possible feature extensions to the application which have not yet been implemented are listed below:
 
 * Additional error checking and validation in the parsing of extra data
-* Facility for uploaded files to be stored and displayed in subsequent sessions along with display of when extra data was added and by who.
-* Geolocation to display a pointer showing the user's current location (particularly beneficial on mobile).
+* Facility for uploaded files to be stored and displayed in subsequent sessions along with display of when extra data was added and by whom
+* Geolocation to display a pointer showing the user's current location (particularly beneficial on mobile)
 * Caching of data and map tiles using IndexedDB, localStorage etc. to allow the application to be used without an internet connection (e.g. in the field).
