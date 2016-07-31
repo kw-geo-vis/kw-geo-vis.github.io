@@ -11,70 +11,26 @@
 	<link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <body>
-<style>
 
-body {
-	display:flex;
-	flex-direction: column;
-}
-
-.head { background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(#ccc));
-    background-image: linear-gradient(#485563, #29323c);
-    border-bottom: 1px solid rgba(0,0,0,0.5);
-	width: 100%;
-	display: flex;
-	color: #fff;
-	font-family: 'Fjalla One', sans-serif;
-	padding: 0.2em;
-    box-sizing: border-box;
-		align-items: center;
-	}
-	
-	.head span {
-	
-	}
-	
-	.foot { background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(#ccc));
-    background-image: linear-gradient(#29323c, #485563);
-    border-top: 1px solid rgba(0,0,0,0.5);
-	width: 100%;
-	color: #fff;
-	font-size: 0.8em;
-	padding: 0.4em;
-	box-sizing: border-box;
-	text-align: right;
-	}
-	
-	.foot a {
-		color: #fff;
-	}
-</style>
 <div class="head">
 	<div id="logo" class="logo">
 	<span class="logo__key">KEY</span>
 	<span class="logo__vis">vis</span>
 	</div>
-	<span style="
-    font-size: 1em;
-	padding: 0.2em 0.2em 0.2em 1em;
-	margin-left: auto;
-	text-align: right;
-">Visualising Geological Data in the Keyworth Area</span>
+	<span class="logo__tag">Visualising Geological Data in the Keyworth Area</span>
 </div>
-
 
 <!--Container for main map-->
 <div id="map" class="map" style="flex-grow: 1"></div>
-<div id="extPopup"></div>
-<div class="foot"><a href="#" onclick="KWMap.displayCredits()">Credits</a> | View project on <a href="https://github.com/kw-geo-vis/kw-geo-vis.github.io">Github</a>
-</div>
 
 <!--Container for data display on small screens-->
+<div id="extPopup"></div>
 
-
+<div class="foot"><a href="#" id="credits">Credits</a> | View project on <a href="https://github.com/kw-geo-vis/kw-geo-vis.github.io">Github</a>
+</div>
 
 <!--JS sources are concatenated and minified for performance reasons but authored SCSS can be viewed either in browser dev tools (via source maps) or in github in the scripts directory-->
-
 <script src="js/app-dist.js"></script>
+
 </body>
 </html>

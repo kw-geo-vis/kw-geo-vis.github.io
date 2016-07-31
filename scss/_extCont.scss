@@ -1,0 +1,44 @@
+.close-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 2em;
+	padding: 0.5em;
+	color: #333;
+	text-decoration: initial;
+}
+
+.hidden {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #fff;
+		opacity: 0;
+		transition: opacity 0.1s linear;
+		pointer-events: none;
+}
+.open {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #fff;
+		z-index: 1000;
+		opacity: 1;
+		transition: opacity 0.4s linear;
+	}
+
+	
+// At large screen sizes, extContainer is hidden irrespective of class value
+@media only screen and (min-width:480px)
+{
+	.open, .hidden
+	{
+		display: none;
+	}
+}

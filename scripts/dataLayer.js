@@ -115,7 +115,7 @@ var DataLayer = {
 	//assumes files are well formatted.  In a larger system a DB or other
 	//Web map system may be used but here we live parse the CSVs
 	_parseFile: function(filename, layers, icons, template, extCont) {
-		Papa.parse('./data/' + filename, {
+		Papa.parse(filename, {
 			download: true,
 			header: true,
 			dynamicTyping: true,
@@ -160,15 +160,64 @@ var DataLayer = {
 			}
 		});
 	},
-
+	
 	//Parse the 4 data files
 	_parseFiles: function() {
-		this._parseFile('fossil.txt', this.layers, this.icons, this.popupTemplate, this.extPopup);
-		this._parseFile('measurement.txt', this.layers, this.icons, this.popupTemplate, this.extPopup);
-		this._parseFile('borehole.txt', this.layers, this.icons, this.popupTemplate, this.extPopup);
-		this._parseFile('rock.txt', this.layers, this.icons, this.popupTemplate, this.extPopup);
+		this.parseLocalFile('fossil.txt');
+		this.parseLocalFile('measurement.txt');
+		this.parseLocalFile('borehole.txt');
+		this.parseLocalFile('rock.txt');
 	},
-
+	
+	//Parse a file from FileInput object (i.e from <input type="file">)
+	parseInputFile: function(file) {
+		this._parseFile(file, this.layers, this.icons, this.popupTemplate, this.extPopup);
+	},
+	
+	//Parse a local csv stored in the data directory
+	parseLocalFile: function(file) {
+		this._parseFile('./data/' + file, this.layers, this.icons, this.popupTemplate, this.extPopup);
+	},
+	
+	//Create button to parse user data files
+	_createFileUpload: function(map) {
+	
+		//Create upload control
+		var ulControl = L.Control.extend({
+			options: {
+					position: 'bottomright' 
+			},
+ 
+			onAdd: function (map) {
+				var container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom fileUploader');
+				container.style.backgroundColor = 'white';
+				container.style.height = '36px';
+	
+				var input = L.DomUtil.create('input', 'fileUploader__input',container);
+				input.type = 'file';
+	
+				L.DomEvent.addListener(input, 'change', function(e){
+					DataLayer.parseInputFile(e.target.files[0]);
+					e.target.value = null;
+				});
+ 
+				container.onclick = function(){
+					if(L.DomUtil.hasClass(container,'fileUploader--open'))
+					{
+						L.DomUtil.removeClass(container,'fileUploader--open');
+					}
+					else
+					{
+						L.DomUtil.addClass(container,'fileUploader--open');
+					}
+				}
+				return container;
+			},
+		});
+		
+		map.addControl(new ulControl());
+	},
+	
 	init: function(map) {
 		// kick things off
 		this._initLayers();
@@ -178,7 +227,7 @@ var DataLayer = {
 		this._initProjections();
 		this._setupTemplate();
 		this._parseFiles();
-		
+		this._createFileUpload(map);
 	}
 
 };

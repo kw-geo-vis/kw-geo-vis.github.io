@@ -76,14 +76,17 @@ L.ResponsivePopup = L.Popup.extend({
 		this._container.style.visibility = '';
 		this._adjustPan();
 	
+		/* Duplicate content to external container */
 		this.options.extContainer.innerHTML = this._content;
+		
+		//Add close button to extContainer
 		var closeButton = L.DomUtil.create('a', 'close-button', this.options.extContainer);
 		closeButton.href = '#close';
 		closeButton.innerHTML = '&#215;';
 		L.DomEvent.on(closeButton, 'click', this._onCloseButtonClick, this);
 		
+		//Setup styling and visibility classes
 		L.DomUtil.addClass(this.options.extContainer,this.options.className);
-		
 		L.DomUtil.removeClass(this.options.extContainer,'hidden');
 		L.DomUtil.addClass(this.options.extContainer,'open');
 	},
@@ -102,6 +105,7 @@ L.ResponsivePopup = L.Popup.extend({
 		//Clear classList to remove classes from previous popup;
 		this.options.extContainer.classList = "";
 		
+		//Hide external container
 		L.DomUtil.removeClass(this.options.extContainer,'open');
 		L.DomUtil.addClass(this.options.extContainer,'hidden');	
 	},

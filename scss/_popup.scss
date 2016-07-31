@@ -1,0 +1,89 @@
+.popup .leaflet-popup-content-wrapper {
+  background: #fff;
+  color:#fff;
+  font-size:16px;
+  line-height:24px;
+  }
+  
+  .popup--Bedrock .leaflet-popup-content-wrapper
+  {
+	border-radius: 12px 0 0 12px;
+  }
+
+.popup .leaflet-popup-tip-container {
+  transform: rotate(0deg);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #fff;
+  box-shadow: none;
+  background: transparent;
+  }
+  
+iframe { 
+	height: 98%;
+	width: 100%;
+	
+	@media only screen and (min-width:480px)
+	{
+		margin: -14px -20px -18px -20px;
+		border-radius: 14px;
+		width: 118%;
+	}
+}
+
+
+.popup--Rock {
+	.leaflet-popup-content-wrapper {
+		background-color: darken(#bb3e3e,10%);
+	}
+	
+	.record__head {
+		color: darken(#bb3e3e,10%);
+	}
+ }
+ 
+.popup--Fossil {
+	.leaflet-popup-content-wrapper {
+		background-color: darken(#61c146,10%);
+	}
+		
+	.record__head {
+		color: darken(#61c146,10%);
+	}
+ }
+ 
+.popup--Measurement {
+	.leaflet-popup-content-wrapper {
+		background-color: darken(#116b9c,10%);
+	}
+			
+	.record__head {
+		color: darken(#116b9c,10%);
+	}
+ }
+.popup--Borehole {
+	.leaflet-popup-content-wrapper {
+		background-color: darken(#8573d0,10%);
+	}
+			
+	.record__head {
+		color: darken(#8573d0,10%);
+	}
+ }
+
+ .popup--Bedrock {
+	.leaflet-popup-content-wrapper {
+		background-color: darken(#F74906,10%);
+	}
+			
+	.record {
+			width: initial;
+			margin: 0;
+		}
+			
+	.record__head {
+		color: darken(#F74906,10%);
+	}
+ }

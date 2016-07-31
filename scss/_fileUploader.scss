@@ -1,0 +1,27 @@
+.fileUploader {
+	overflow: hidden;
+	padding-left: 36px;
+	box-sizing: border-box;
+    height: 36px;
+    background-image: url('../imgs/upload.png'); 
+    background-size: 28px;
+    background-repeat: no-repeat;
+    background-position-x: 4px;
+    background-position-y: center;
+    width: 36px;
+	cursor: pointer;
+	
+	&__input {
+		width: 7.2em;
+		margin-top: 0.5em;
+		margin-left: 0.3em;
+	}
+	
+	&--open {
+		width: auto;
+		padding-left: 0;
+		padding-right: 25px;
+		background-image: url('../imgs/close.png'); 
+		background-position-x: right;
+	}
+}

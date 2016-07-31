@@ -51,23 +51,21 @@
 			minZoom: 12
 		};
 		
+		//BGS Bedrock
 		var layer1 = L.WMS.bgs("https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer?", options);
 		layer1.addSubLayer("BGS.50k.Bedrock");
 		layer1.getLayer("BGS.50k.Bedrock").addTo(this.layers.BedRock);
 		
+		//BGS Superficial
 		layer1.removeSubLayer("BGS.50k.Bedrock");
 		layer1.addSubLayer("BGS.50k.Superficial.deposits");
 		layer1.getLayer("BGS.50k.Superficial.deposits").addTo(this.layers.Superficial);
 		
+		//BGS Artificial Ground
 		layer1.removeSubLayer("BGS.50k.Superficial.deposits");
 		layer1.addSubLayer("BGS.50k.Artificial.ground");
-		layer1.getLayer("BGS.50k.Artificial.ground").addTo(this.layers.Artificial);
-		
+		layer1.getLayer("BGS.50k.Artificial.ground").addTo(this.layers.Artificial);		
 		layer1.removeSubLayer("BGS.50k.Artificial.ground");
-		
-	//	var layer2 = L.WMS.bgs("https://map.bgs.ac.uk/arcgis/services/GeoIndex_Onshore/hazards/MapServer/WmsServer?", options);
-	//	layer2.addSubLayer("Landslides");
-	//	layer2.getLayer("Landslides").addTo(this.layers.BedRock);
 	},
 
 	//Setup responsive external popup

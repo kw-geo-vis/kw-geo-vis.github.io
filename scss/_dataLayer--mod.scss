@@ -1,0 +1,11 @@
+.leaflet-control-layers-toggle, .leaflet-touch .leaflet-control-layers-toggle {
+	width: auto;
+	padding-left: 30px;
+	background-position-x: 5px;
+	text-decoration: initial;
+} 
+.leaflet-control-layers-toggle::after {
+	content: 'Select Data Layers';
+	display: block;
+	padding: 10px;
+} 

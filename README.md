@@ -10,6 +10,8 @@ All aspects of the specification have been completed with data from the provided
 
 <img src="https://kw-geo-vis.github.io/imgs/data.gif" width="300" alt="KEYvis core functionality"/>
 
+Extra data files (in the format of the provided files) can be loaded on to the map for visualisation using the upload button in the bottom right of the map.  Extra files are parsed locally on the client and are not currently saved for future visits to the application.
+
 Additionally, data overlays for BGS data sources displaying Bedrock, Superficial Deposits and Artificial ground can be toggled on and off and the associated data record accessed.
 
 <img src="https://kw-geo-vis.github.io/imgs/extra-data.gif" width="300" alt="KEYvis additional functionality"/>
@@ -30,6 +32,7 @@ The site is a responsive web-based application which is equally functional on la
 
 Some possible feature extensions to the application which have not yet been implemented are listed below:
 
-* Facility to upload and visualise additional data files with new data.  CSV files are already parsed and displayed on request so will not be complicated.
+* Additional error checking and validation in the parsing of extra data
+* Facility for uploaded files to be stored and displayed in subsequent sessions along with display of when extra data was added and by who.
 * Geolocation to display a pointer showing the user's current location (particularly beneficial on mobile).
 * Caching of data and map tiles using IndexedDB, localStorage etc. to allow the application to be used without an internet connection (e.g. in the field).

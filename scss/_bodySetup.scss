@@ -1,0 +1,65 @@
+html, body {
+    height: 100%;
+}
+
+body {
+	display:flex;
+	flex-direction: column;
+}
+
+.map {
+    height: 100%;
+}
+
+.head { 
+    background-image: linear-gradient(#485563, #29323c);
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+	width: 100%;
+	display: flex;
+	color: #fff;
+	font-family: 'Fjalla One', sans-serif;
+	padding: 0.2em;
+    box-sizing: border-box;
+	align-items: center;
+	
+	.logo {
+		font-size: 2em;
+		display: flex;
+		cursor: pointer;
+	}
+}
+	
+.foot { 
+    background-image: linear-gradient(#29323c, #485563);
+    border-top: 1px solid rgba(0,0,0,0.5);
+	width: 100%;
+	color: #fff;
+	font-size: 0.8em;
+	padding: 0.4em;
+	box-sizing: border-box;
+	text-align: right;
+	
+	a {
+		color: #fff;
+	}
+}
+
+.logo {
+	&__key {
+		display: inline-block;
+		font-family: 'Fjalla One', sans-serif;
+	}
+	
+	&__vis {
+		display: inline-block;
+		transform: skewx(-16deg);
+		font-family: 'Fjalla One', sans-serif;
+	}
+	
+	&__tag {
+	    font-size: 1em;
+		padding: 0.2em 0.2em 0.2em 1em;
+		margin-left: auto;
+		text-align: right;
+	}
+}
