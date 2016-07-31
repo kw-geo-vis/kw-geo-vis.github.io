@@ -25,6 +25,7 @@
 			
 			.record { 
 				height: 100%;
+				overflow-y: scroll;
 			}
 		}
 

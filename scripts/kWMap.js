@@ -71,7 +71,7 @@ var KWMap = {
 				'<div class="intro">',
 				'<h1 class="intro__head"><div class="logo"><span class="logo__key">KEY</span><span class="logo__vis">vis</span></div></h1>',
 				'<hr/>',
-				'<p class="intro__text">Welcome to KEY<em>vis</em>.  KEY<em>vis</em> provides easy access to geological information and data from in and around the KeyWorth area.</p>',
+				'<p class="intro__text">Welcome to KEY<em>vis</em>.  KEY<em>vis</em> provides easy access to geological information and data from in and around the Keyworth area.</p>',
 				'<img src="imgs/data.gif"  class="intro__img">',
 				'<p class="intro__text">Data points available include:</p>',
 				'<ul>',				
@@ -194,7 +194,6 @@ var KWMap = {
 
 		// listen for the results event and add every result to the map
 		this.searchControl.on("results", function(data) {
-			console.log(data);
 			results.clearLayers();
 			
 			//Just display/navigate to the hit at the top of the suggest list (end of results array)
